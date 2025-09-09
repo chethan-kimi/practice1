@@ -17,7 +17,7 @@ jobs:
             ls -ltra
             cat README.md >> world.txt
 
-        - name: to upload file    
+        - name: to upload artifact    
           uses: actions/upload-artifact@v4
           with:
             name: my-artifact
@@ -26,7 +26,12 @@ jobs:
     to-find-a-string:
         runs-on: ubuntu-latest
         steps:
+        - name: To download artifact
+          uses: actions/download-artifact@v5
+          with:
+            name: my-artifact
+
         - name: To find a string
           run: |
-            grep -i "DRAGON" .README.md
+              grep -i "DRAGON" world.txt
   
