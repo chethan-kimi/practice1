@@ -16,7 +16,7 @@ jobs:
             echo "My first workflow"
             ls -ltra
             cat README.md
-            
+
     to-find-a-string:
         runs-on: ubuntu-latest
         steps:
