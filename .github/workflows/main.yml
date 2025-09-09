@@ -20,7 +20,7 @@ jobs:
         - name: to upload artifact    
           uses: actions/upload-artifact@v4
           with:
-            name: my-artifact
+            name: world-text-file
             path: world.txt
 
     to-find-a-string:
@@ -29,7 +29,7 @@ jobs:
         - name: To download artifact
           uses: actions/download-artifact@v5
           with:
-            name: my-artifact
+            name: world-text-file
 
         - name: To find a string
           run: |
