@@ -16,7 +16,7 @@ jobs:
             echo "My first workflow"
             ls -ltra
             cat README.md
-            echo README.md > ./github/workflow/world.txt
+            echo README.md >> ./github/workflow/world.txt
 
         - name: to upload file    
           uses: actions/upload-artifact@v4
