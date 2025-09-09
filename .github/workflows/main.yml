@@ -16,5 +16,7 @@ jobs:
             echo "My first workflow"
             ls -ltra
             cat README.md
-      
+
+        - name: Executing Shell Script
+          run: .github/workflows/shell.sh
   
