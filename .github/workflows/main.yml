@@ -14,8 +14,15 @@ jobs:
         - name: Welcome Message
           run: |
             echo "My first workflow"
-            ls -ltra >> test.txt
+            ls -ltra
             cat README.md
+            echo README.md > ./github/workflow/world.txt
+
+        - name: to upload file    
+          uses: actions/upload-artifact@v4
+          with:
+            name: my-artifact
+            path: ./github/workflow/world.txt
 
     to-find-a-string:
         runs-on: ubuntu-latest
