@@ -5,7 +5,7 @@ on:
   push:
 
 jobs:
-    unit-testing:
+    multiple-commands-execution:
         runs-on: ubuntu-latest
         steps:
         - name: checkout repository
@@ -17,8 +17,10 @@ jobs:
             ls -ltra
             cat README.md
 
-        - name: Executing Shell Script
+      to-find-a-string:
+        runs-on: ubuntu-latest
+        steps:
+        - name: To find a string
           run: |
-            chmod +x shell.sh
-            ./shell.sh
+            grep -i "DRAGON" README.md
   
