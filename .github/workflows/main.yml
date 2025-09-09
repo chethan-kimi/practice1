@@ -24,6 +24,7 @@ jobs:
             path: world.txt
 
     to-find-a-string:
+        needs: multiple-commands-execution
         runs-on: ubuntu-latest
         steps:
         - name: To download artifact
