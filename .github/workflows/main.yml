@@ -22,5 +22,5 @@ jobs:
         steps:
         - name: To find a string
           run: |
-            grep -i "DRAGON" README.md
+            grep -i "DRAGON" ./README.md
   
