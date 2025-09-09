@@ -8,10 +8,15 @@ jobs:
     unit-testing:
         runs-on: ubuntu-latest
         steps:
+        - name: checkout repository
+          uses: actions/checkout@v5
+
         - name: Welcome Message
           run: echo "My first workflow"
+
         - name: List Files
           run: ls -la
+          
         - name: Read file
           run: cat README.md        
   
