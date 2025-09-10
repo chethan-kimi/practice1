@@ -40,7 +40,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
       - name: Docker Build
-        run: docker build -t docker.io/chethankimi/prod:latest
+        run: docker build -t https://hub.docker.com/repository/docker/chethankimi/test/general:latest
 
       - name: Docker Login
         run: docker login --username=chethankimi --password=Doc@lti@2025
