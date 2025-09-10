@@ -42,9 +42,6 @@ jobs:
       - name: Docker Build
         run: echo docker build -t chethankimi/test:latest
 
-      - name: Docker Login
-        run: echo docker login --username=chethankimi --password=Doc@lti@2025
-
       - name: Docker Publish
         run: echo docker push -t chethankimi/test:latest 
  
