@@ -46,6 +46,6 @@ jobs:
         run: echo docker login --username=chethankimi --password=Doc@lti@2025
 
       - name: Docker Publish
-        run: echo docker push -t docker.io/chethankimi/prod1:latest   
+        run: echo docker push -t https://hub.docker.com/repository/docker/chethankimi/test1/general:latest   
  
   
