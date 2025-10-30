@@ -15,10 +15,10 @@ stages:
          Python35:
            PYTHON_VERSION: '3.5'
          Python36:
-           PYTHON_VERSION: '3.6'
+           PYTHON_VERSION: '3.6.0'
          Python37:
            PYTHON_VERSION: '3.7'
-       maxParallel: 3
+       maxParallel: 2
 
      steps:
        - checkout: none
