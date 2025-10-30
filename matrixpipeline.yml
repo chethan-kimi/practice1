@@ -1,0 +1,25 @@
+name: MatrixPipeline
+
+trigger: none
+
+stages:
+ - stage: Build_Stage
+   jobs:
+
+   - job: Build
+     strategy:
+       matrix:
+         Python35:
+           PYTHON_VERSION: '3.5'
+         Python35:
+           PYTHON_VERSION: '3.6'
+         Python35:
+           PYTHON_VERSION: '3.7'
+       maxParallel: 3
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- checkout: none
+- script: echo $(PYTHON_VERSION)
