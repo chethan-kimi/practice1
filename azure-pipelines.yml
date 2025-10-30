@@ -39,8 +39,8 @@ stages:
          ubuntu-22-04:
            imageName: 'ubuntu-22.04'
            script: 'printenv'
-         ubuntu-20-04:
-           imageName: 'ubuntu-20.04'
+         ubuntu-24-04:
+           imageName: 'ubuntu-24.04'
            script: 'printenv'
          macos-12-monterey:
            imageName: 'macOS-12'
