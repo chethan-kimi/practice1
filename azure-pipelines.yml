@@ -42,13 +42,13 @@ stages:
          ubuntu-24-04:
            imageName: 'ubuntu-24.04'
            script: 'printenv'
-         macos-12-monterey:
-           imageName: 'macOS-12'
-           script: 'printenv'
-         macos-11-bigsur:
-           imageName: 'macOS-11'
-           script: 'printenv'
-      maxParallel: 6
+        #  macos-12-monterey:
+        #    imageName: 'macOS-12'
+        #    script: 'printenv'
+        #  macos-11-bigsur:
+        #    imageName: 'macOS-11'
+        #    script: 'printenv'
+      maxParallel: 3
 
      pool:
        vmImage: $(imageName)
