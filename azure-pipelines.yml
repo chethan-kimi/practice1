@@ -1,22 +1,25 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+name: MatrixPipeline
 
-trigger:
-- main
+trigger: none
+
+stages:
+ - stage: Build_Stage
+   jobs:
+
+   - job: Build
+     strategy:
+       matrix:
+         Python35:
+           PYTHON_VERSION: '3.5'
+         Python35:
+           PYTHON_VERSION: '3.6'
+         Python35:
+           PYTHON_VERSION: '3.7'
+       maxParallel: 3
 
 pool:
   vmImage: ubuntu-latest
 
-variables:
- - name: my-bare-variable
-   value: 'value of my bare variable'
- - group: my-variable-group
- - name: my-passed-variable
-   value: $[variables.myvariable]
-
 steps:
- - script: echo $(my-bare-variable)
- - script: echo $(myvariable)
- - script: echo $(my-passed-variable)
+- checkout: none
+- script: echo $(PYTHON_VERSION)
