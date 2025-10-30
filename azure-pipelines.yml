@@ -2,61 +2,61 @@ name: MatrixPipeline
 
 trigger: none
 
-# pool:
-#   vmImage: ubuntu-latest
-
 stages:
-#  - stage: Build_Stage
-#    jobs:
+ - stage: Build_Stage
+   jobs:
 
-#    - job: Build
-#      strategy:
-#        matrix:
-#          Python35:
-#            PYTHON_VERSION: '3.5'
-#          Python36:
-#            PYTHON_VERSION: '3.6.0'
-#          Python37:
-#            PYTHON_VERSION: '3.7'
-#        maxParallel: 2
+   - job: Build
+     strategy:
+       matrix:
+         Python35:
+           PYTHON_VERSION: '3.5'
+         Python36:
+           PYTHON_VERSION: '3.6.0'
+         Python37:
+           PYTHON_VERSION: '3.7'
+       maxParallel: 2
 
-#      steps:
-#        - checkout: none
-#        - script: echo $(PYTHON_VERSION)
+     pool:
+         vmImage: ubuntu-latest
 
-#  - stage: Test_Stage
-#    jobs:
+     steps:
+       - checkout: none
+       - script: echo $(PYTHON_VERSION)
 
-#    - job: Test
-#      strategy:
-#       matrix:
-#          WindowsServer2022:
-#            imageName: 'windows-2022'
-#            script: 'set'
-#          WindowsServer2019:
-#            imageName: 'windows-2019'
-#            script: 'set'
-#          ubuntu-22-04:
-#            imageName: 'ubuntu-22.04'
-#            script: 'printenv'
-#          ubuntu-24-04:
-#            imageName: 'ubuntu-24.04'
-#            script: 'printenv'
-        #  macos-12-monterey:
-        #    imageName: 'macOS-12'
-        #    script: 'printenv'
-        #  macos-11-bigsur:
-        #    imageName: 'macOS-11'
-        #    script: 'printenv'
-    #   maxParallel: 3
+ - stage: Test_Stage
+   jobs:
 
-    #  pool:
-    #    vmImage: $(imageName)
-    #  steps:
-    #  - checkout: none
-    #  - script: |
-    #      echo $(imageName)
-    #      $(script)
+   - job: Test
+     strategy:
+      matrix:
+         WindowsServer2022:
+           imageName: 'windows-2022'
+           script: 'set'
+         WindowsServer2019:
+           imageName: 'windows-2019'
+           script: 'set'
+         ubuntu-22-04:
+           imageName: 'ubuntu-22.04'
+           script: 'printenv'
+         ubuntu-24-04:
+           imageName: 'ubuntu-24.04'
+           script: 'printenv'
+         macos-12-monterey:
+           imageName: 'macOS-12'
+           script: 'printenv'
+         macos-11-bigsur:
+           imageName: 'macOS-11'
+           script: 'printenv'
+      maxParallel: 3
+
+     pool:
+       vmImage: $(imageName)
+     steps:
+     - checkout: none
+     - script: |
+         echo $(imageName)
+         $(script)
 
  - stage: Prod_Stage
    jobs:
