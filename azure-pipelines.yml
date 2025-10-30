@@ -24,37 +24,61 @@ stages:
 #        - checkout: none
 #        - script: echo $(PYTHON_VERSION)
 
- - stage: Test_Stage
-   jobs:
+#  - stage: Test_Stage
+#    jobs:
 
-   - job: Test
-     strategy:
-      matrix:
-         WindowsServer2022:
-           imageName: 'windows-2022'
-           script: 'set'
-         WindowsServer2019:
-           imageName: 'windows-2019'
-           script: 'set'
-         ubuntu-22-04:
-           imageName: 'ubuntu-22.04'
-           script: 'printenv'
-         ubuntu-24-04:
-           imageName: 'ubuntu-24.04'
-           script: 'printenv'
+#    - job: Test
+#      strategy:
+#       matrix:
+#          WindowsServer2022:
+#            imageName: 'windows-2022'
+#            script: 'set'
+#          WindowsServer2019:
+#            imageName: 'windows-2019'
+#            script: 'set'
+#          ubuntu-22-04:
+#            imageName: 'ubuntu-22.04'
+#            script: 'printenv'
+#          ubuntu-24-04:
+#            imageName: 'ubuntu-24.04'
+#            script: 'printenv'
         #  macos-12-monterey:
         #    imageName: 'macOS-12'
         #    script: 'printenv'
         #  macos-11-bigsur:
         #    imageName: 'macOS-11'
         #    script: 'printenv'
-      maxParallel: 3
+    #   maxParallel: 3
+
+    #  pool:
+    #    vmImage: $(imageName)
+    #  steps:
+    #  - checkout: none
+    #  - script: |
+    #      echo $(imageName)
+    #      $(script)
+
+ - stage: Prod_Stage
+   jobs:
+
+   - job: Prod
+     strategy:
+       matrix:
+         Deploy_Prod_EastEurope:
+           location: 'East-Europe'
+         Deploy_Prod_WestEurope:
+           location: 'West-Europe'
+         Deploy_Prod_EastUS:
+           location: 'East-US'
+         Deploy_Prod_WestUS:
+           location: 'West-US'
+       maxParallel: 4
 
      pool:
-       vmImage: $(imageName)
+        vmImage: 'ubuntu-22.04'
+
      steps:
-     - checkout: none
-     - script: |
-         echo $(imageName)
-         $(script)
+      - checkout: none
+      - script: |
+          echo 'Started deploying app to region $(location)...'
  
