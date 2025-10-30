@@ -72,7 +72,7 @@ stages:
            location: 'East-US'
          Deploy_Prod_WestUS:
            location: 'West-US'
-       maxParallel: 4
+       maxParallel: 2
 
      pool:
         vmImage: 'ubuntu-22.04'
