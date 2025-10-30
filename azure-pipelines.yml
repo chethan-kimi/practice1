@@ -2,24 +2,59 @@ name: MatrixPipeline
 
 trigger: none
 
-pool:
-  vmImage: ubuntu-latest
+# pool:
+#   vmImage: ubuntu-latest
 
 stages:
- - stage: Build_Stage
+#  - stage: Build_Stage
+#    jobs:
+
+#    - job: Build
+#      strategy:
+#        matrix:
+#          Python35:
+#            PYTHON_VERSION: '3.5'
+#          Python36:
+#            PYTHON_VERSION: '3.6.0'
+#          Python37:
+#            PYTHON_VERSION: '3.7'
+#        maxParallel: 2
+
+#      steps:
+#        - checkout: none
+#        - script: echo $(PYTHON_VERSION)
+
+ - stage: Test_Stage
    jobs:
 
-   - job: Build
+   - job: Test
      strategy:
-       matrix:
-         Python35:
-           PYTHON_VERSION: '3.5'
-         Python36:
-           PYTHON_VERSION: '3.6.0'
-         Python37:
-           PYTHON_VERSION: '3.7'
-       maxParallel: 2
+      matrix:
+         WindowsServer2022:
+           imageName: 'windows-2022'
+           script: 'set'
+         WindowsServer2019:
+           imageName: 'windows-2019'
+           script: 'set'
+         ubuntu-22-04:
+           imageName: 'ubuntu-22.04'
+           script: 'printenv'
+         ubuntu-20-04:
+           imageName: 'ubuntu-20.04'
+           script: 'printenv'
+         macos-12-monterey:
+           imageName: 'macOS-12'
+           script: 'printenv'
+         macos-11-bigsur:
+           imageName: 'macOS-11'
+           script: 'printenv'
+      maxParallel: 6
 
+     pool:
+       vmImage: $(imageName)
      steps:
-       - checkout: none
-       - script: echo $(PYTHON_VERSION)
+     - checkout: none
+     - script: |
+         echo $(imageName)
+         $(script)
+ 
